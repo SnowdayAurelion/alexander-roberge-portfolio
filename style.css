@@ -1,0 +1,865 @@
+/* --- CSS Variables --- */
+:root {
+    /* Dark Mode Base Colors */
+    --dark-background: #121212; /* Very dark gray */
+    --dark-surface: #1A1A1A; /* Slightly lighter dark gray for elements */
+    --light-text: #E0E0E0; /* Soft white for general text */
+    --muted-text: #A0A0A0; /* Muted light gray for secondary text */
+
+    /* Cyan & Gold Theme Colors */
+    --primary-cyan: #00BCD4; /* Vibrant Cyan */
+    --accent-gold: #FFD700; /* Bright Gold */
+    
+    /* Mesh Gradient Colors */
+    --grad-1: #4DD0E1; /* Light Cyan */
+    --grad-2: #FFEB3B; /* Lighter Gold */
+    --grad-3: #80DEEA; /* Another light Cyan */
+}
+
+/* --- General & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--dark-background);
+    font-family: 'Work Sans', sans-serif;
+    color: var(--light-text);
+    overflow-x: hidden; /* Prevent horizontal scroll from skewed tags */
+}
+
+/* --- Typography --- */
+h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 already covers it */
+    font-family: 'Rubik', sans-serif;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    padding: 3rem 2rem;
+    gap: 1.5rem; /* Space between name, image, and nav */
+    text-align: center;
+    position: relative; /* Positioning context for the nav */
+}
+
+.profile-picture-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.profile-img {
+    width: 440px;  /* Made face ~4x larger (area) */
+    height: 440px; /* Made face ~4x larger (area) */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover;
+    border: 8px solid var(--primary-cyan); /* Scaled border */
+    box-shadow: 15px 15px 0 var(--accent-gold); /* Scaled shadow */
+    display: block;
+    position: relative; /* Ensure it's on top of tags */
+    z-index: 2;
+    animation: profile-float 6s ease-in-out infinite; /* Subtle float animation */
+}
+
+.logo {
+    font-size: 1.8rem; /* Slightly larger for better visibility in dark mode */
+    color: var(--primary-cyan);
+}
+
+.header-nav {
+    position: absolute; /* Move to corner */
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping if screen is narrow */
+    gap: 1rem;
+}
+
+.nav-pill {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700; /* Bolder for better contrast */
+    color: var(--dark-background); /* Dark text on light pill */
+    background: 
+        radial-gradient(circle at 10% 20%, var(--grad-1), transparent 40%),
+        radial-gradient(circle at 80% 90%, var(--grad-2), transparent 40%),
+        radial-gradient(circle at 50% 50%, var(--grad-3), transparent 40%),
+        var(--light-text); /* Base color for the pill */
+    border: 2px solid var(--primary-cyan);
+    box-shadow: 4px 4px 0 var(--primary-cyan);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-pill:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--accent-gold);
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    padding: 4rem;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(4rem, 15vw, 12rem);
+    color: var(--primary-cyan);
+    line-height: 0.9;
+    /* Refined 3D effect: multiple layered shadows for a smoother, extruded look */
+    text-shadow:
+        1px 1px 0 var(--dark-surface),
+        2px 2px 0 var(--dark-surface),
+        3px 3px 0 var(--dark-surface),
+        4px 4px 0 var(--dark-surface),
+        5px 5px 0 var(--dark-surface),
+        6px 6px 0 var(--dark-surface),
+        7px 7px 0 var(--dark-surface),
+        8px 8px 0 var(--dark-surface),
+        9px 9px 0 var(--dark-surface),
+        10px 10px 0 var(--dark-surface),
+        11px 11px 0 var(--dark-surface),
+        12px 12px 0 var(--dark-surface),
+        13px 13px 0 var(--dark-surface),
+        14px 14px 0 var(--dark-surface),
+        15px 15px 0 var(--dark-surface),
+        16px 16px 0 var(--dark-surface),
+        17px 17px 0 var(--dark-surface),
+        18px 18px 0 var(--dark-surface),
+        19px 19px 0 var(--dark-surface),
+        20px 20px 0 var(--dark-surface), /* Creates the main extrusion depth */
+        22px 22px 10px rgba(0, 0, 0, 0.7); /* A final, softer, blurred shadow for overall depth and professionalism */
+    -webkit-text-stroke: 1px var(--accent-gold); /* Reduced thickness for a less stark, more refined outline */
+}
+
+.subtitle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--light-text);
+    margin-top: 1rem;
+}
+
+/* Refined 3D effect: multiple layered shadows for a smoother, extruded look */
+.hero-title {
+    text-shadow:
+        1px 1px 0 var(--dark-surface),
+        2px 2px 0 var(--dark-surface),
+        3px 3px 0 var(--dark-surface),
+        4px 4px 0 var(--dark-surface),
+        5px 5px 0 var(--dark-surface),
+        6px 6px 0 var(--dark-surface),
+        7px 7px 0 var(--dark-surface),
+        8px 8px 0 var(--dark-surface),
+        9px 9px 0 var(--dark-surface),
+        10px 10px 0 var(--dark-surface),
+        11px 11px 0 var(--dark-surface),
+        12px 12px 0 var(--dark-surface),
+        13px 13px 0 var(--dark-surface),
+        14px 14px 0 var(--dark-surface),
+        15px 15px 0 var(--dark-surface),
+        16px 16px 0 var(--dark-surface),
+        17px 17px 0 var(--dark-surface),
+        18px 18px 0 var(--dark-surface),
+        19px 19px 0 var(--dark-surface),
+        20px 20px 0 var(--dark-surface), /* Creates the main extrusion depth */
+        22px 22px 10px rgba(0, 0, 0, 0.7); /* A final, softer, blurred shadow for overall depth and professionalism */
+    -webkit-text-stroke: 1px var(--accent-gold); /* Reduced thickness for a less stark, more refined outline */
+}
+
+/* Pseudo-element for the background oval blur with gritty grain */
+.hero-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%; /* Large horizontal oval */
+    height: 60%; /* Large horizontal oval */
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Center the pseudo-element */
+    filter: blur(80px); /* Initial blur */
+    opacity: 0.15; /* Initial subtlety */
+    z-index: -1; /* Behind the text */
+    animation: background-glow-flicker 5s ease-in-out infinite alternate; /* Apply flicker animation */
+
+    /* Gritty grain effect using repeating-radial-gradient */
+    background-image: repeating-radial-gradient(
+        circle at center,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.1) 1px,
+        transparent 1px,
+        transparent 100%
+    );
+    background-size: 4px 4px; /* Adjust for desired grain density */
+    background-blend-mode: overlay; /* Blend the grain with the gold color */
+}
+
+/* Keyframes for the background glow animation */
+@keyframes background-glow-flicker {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; filter: blur(80px); }
+    25% { transform: translate(-48%, -52%) scale(1.02); opacity: 0.18; filter: blur(85px); }
+    50% { transform: translate(-51%, -49%) scale(0.98); opacity: 0.12; filter: blur(75px); }
+    75% { transform: translate(-49%, -51%) scale(1.01); opacity: 0.17; filter: blur(82px); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; filter: blur(80px); }
+}
+
+/* --- Marquee Section (Skills Ticker) --- */
+.marquee-section {
+    background-color: var(--dark-surface); /* Dark background for contrast */
+    padding: 1rem 0;
+    overflow: hidden; /* Hide content outside the marquee */
+    border-top: 2px solid var(--primary-cyan); /* Consistent with grid-section borders */
+    border-bottom: 2px solid var(--primary-cyan);
+    margin: 6rem 0; /* Spacing above and below the marquee */
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap; /* Keep all items on a single line */
+    animation: marquee-scroll 30s linear infinite; /* Adjust duration for speed */
+    width: fit-content; /* Allow content to define its width */
+}
+
+.marquee-content:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+.marquee-item-group {
+    display: inline-flex; /* Use inline-flex to keep groups together */
+    align-items: center;
+    padding: 0 2rem; /* Spacing between duplicated groups */
+}
+
+.marquee-item-group span {
+    font-family: 'Work Sans', sans-serif; /* Dark-gray sans-serif font */
+    color: var(--muted-text); /* Muted light gray color */
+    font-size: 1.2rem;
+    margin-right: 0.5rem; /* Space after skill name */
+    text-transform: uppercase; /* Optional: make skills uppercase */
+    letter-spacing: 0.05em;
+}
+
+.marquee-item-group .star {
+    color: var(--accent-gold); /* Gold for the star icon */
+    font-size: 1rem;
+    margin-right: 1.5rem; /* Space after star before next skill */
+    vertical-align: middle; /* Align star vertically */
+}
+
+/* Keyframes for the infinite scrolling animation */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%); /* Scrolls exactly one group's width for seamless loop */
+    }
+}
+
+/* --- Floating, Skewed Tags --- */
+.tag-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* So they don't block clicks */
+}
+
+.tag {
+    position: absolute;
+    background-color: var(--primary-cyan);
+    color: var(--dark-background); /* Dark text on cyan tag */
+    padding: 0.5rem 1rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 3px 3px 0 var(--accent-gold);
+    animation: float 8s ease-in-out infinite;
+}
+
+.tag-1 { top: 20%; left: 10%; transform: rotate(-10deg) skew(-15deg); animation-name: float1; animation-delay: -2s; }
+.tag-2 { top: 30%; right: 5%; transform: rotate(5deg) skew(-15deg); animation-name: float2; }
+.tag-3 { bottom: 30%; left: 5%; transform: rotate(8deg) skew(-15deg); animation-name: float3; animation-delay: -4s; }
+.tag-4 { bottom: 20%; right: 10%; transform: rotate(-5deg) skew(-15deg); animation-name: float4; animation-delay: -6s; }
+
+@keyframes float1 { 0% { transform: translateY(0px) rotate(-10deg) skew(-15deg); } 50% { transform: translateY(-20px) rotate(-10deg) skew(-15deg); } 100% { transform: translateY(0px) rotate(-10deg) skew(-15deg); } }
+@keyframes float2 { 0% { transform: translateY(0px) rotate(5deg) skew(-15deg); } 50% { transform: translateY(-20px) rotate(5deg) skew(-15deg); } 100% { transform: translateY(0px) rotate(5deg) skew(-15deg); } }
+@keyframes float3 { 0% { transform: translateY(0px) rotate(8deg) skew(-15deg); } 50% { transform: translateY(-20px) rotate(8deg) skew(-15deg); } 100% { transform: translateY(0px) rotate(8deg) skew(-15deg); } }
+@keyframes float4 { 0% { transform: translateY(0px) rotate(-5deg) skew(-15deg); } 50% { transform: translateY(-20px) rotate(-5deg) skew(-15deg); } 100% { transform: translateY(0px) rotate(-5deg) skew(-15deg); } }
+
+/* Keyframes for the profile image float effect */
+@keyframes profile-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Styling for section headers placed outside the grid */
+/* This class is intended for main section titles like "My Projects" and "My Experience" */
+.section-title-outside-grid {
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem); /* Make them prominent */
+    color: var(--primary-cyan);
+    margin-top: 1rem; /* Keep space above the title */
+    margin-bottom: 0.25rem; /* Reduced space below the title */
+    text-shadow: 3px 3px 0 var(--dark-surface);
+}
+
+/* --- Modular Grid Section --- */
+.grid-section {
+    display: grid;
+    grid-template-columns: 1fr; /* Panels will now stack vertically */
+    gap: 2px; /* Gap remains black for separation */
+    background-color: var(--dark-background); /* Background for the gaps */
+    /* Removed border-top and border-bottom from grid-section, individual items will have borders */
+    padding: 4rem; /* Increased padding for more dominance */
+    margin: 0.5rem 0 10rem 0; /* Further reduced top margin */
+    /* Removed overflow: hidden; to allow hover-popup to display outside its bounds */
+}
+
+/* Remove gap between Experience and Projects sections */
+#experience {
+    /* These specific margin overrides are no longer necessary as grid-section now handles vertical stacking */
+    /* and the default margins will apply consistently. */
+    /* margin-top: 0; */
+    /* margin-bottom: 0; */
+}
+
+#projects {
+    margin-top: 0;
+}
+
+.grid-item {
+    background-color: var(--dark-surface);
+    padding: 3rem; /* Keep padding for the whole item */
+    border: 2px solid var(--primary-cyan); /* Each grid item now has its own border */
+    display: flex;
+    flex-direction: row-reverse; /* Image on the right, text on the left */
+    align-items: stretch; /* Ensure children stretch to fill height */
+    /* Removed overflow: hidden; to allow hover-popup to display outside its bounds */
+    gap: 2rem; /* Gap between image and text content */
+}
+ 
+/* Container for the image within a grid item */
+.grid-image-container {
+    flex: 1; /* Takes 1/3 of the space */
+    min-width: 0; /* Allow shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container for the text content within a grid item */
+.grid-text-content {
+    flex: 2; /* Takes 2/3 of the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    min-width: 0; /* Allow shrinking */
+}
+
+/* Styling for images within grid items (general) */
+.grid-item-img {
+    max-width: 100%;
+    max-height: 100%; /* Ensure image doesn't overflow container vertically */
+    object-fit: contain; /* Contain the image within its bounds */
+    border-radius: 8px; /* Slightly rounded corners */
+    border: 2px solid var(--primary-cyan); /* Consistent border style */
+    box-shadow: 4px 4px 0 var(--accent-gold); /* Consistent shadow style */
+    display: block; /* Ensure it takes its own line */
+    margin: auto; /* Center the image within its container */
+}
+
+/* Adjustments for text within grid items to accommodate new structure */
+.grid-text-content ul {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 0; /* Remove default padding */
+    margin-top: 0.5rem;
+}
+
+/* Adjustments for text within grid items to accommodate new structure */
+.grid-item h3 {
+    color: var(--primary-cyan); /* Keep consistent with other titles */
+    margin-bottom: 0.5rem; /* Space below the main title */
+    font-size: 1.5rem; /* Slightly larger for main education title */
+}
+
+.grid-item p.experience-date {
+    color: var(--muted-text); /* Muted text for dates */
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem; /* More space after date before highlights */
+}
+ 
+.grid-text-content h4 {
+    color: var(--accent-gold); /* Make subheadings stand out */
+    margin-top: 1.5rem; /* Space above the subheading */
+    margin-bottom: 0.8rem; /* Space below the subheading */
+    font-size: 1.1rem;
+}
+
+/* Ensure list items have relative positioning for custom bullets */
+.grid-text-content li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem; /* Indent for custom bullet */
+    color: var(--light-text); /* Ensure text color is correct */
+    line-height: 1.4;
+}
+
+.grid-text-content li::before {
+    content: '•'; /* Custom bullet point */
+    color: var(--primary-cyan); /* Color the bullet */
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Style for hyperlinks within grid item list items */
+.grid-text-content li a {
+    color: var(--accent-gold); /* Make the link yellow */
+    color: var(--primary-cyan); /* Make the link blue by default */
+    text-decoration: underline dotted; /* Add a dotted underline for clarity */
+    text-decoration-color: var(--primary-cyan); /* Make the dotted line blue */
+    transition: color 0.2s ease, text-decoration-color 0.2s ease; /* Smooth transition for color changes */
+}
+
+.grid-text-content li a:hover {
+    color: var(--accent-gold); /* Turn yellow on hover */
+    text-decoration-color: var(--accent-gold); /* Make the dotted line yellow on hover */
+}
+/* --- Timeline Section --- */
+#timeline {
+    margin: 0.5rem 0; /* Reduced top margin for timeline section */
+    padding: 2rem 0; /* Vertical padding */
+    background-color: var(--dark-surface);
+    border-top: 2px solid var(--primary-cyan);
+    border-bottom: 2px solid var(--primary-cyan);
+    position: relative; /* For positioning the line */
+}
+
+.timeline-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to items */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding: 4rem 1rem 2rem; /* Increased top padding to make space for dots above the line */
+    padding: 4rem 1.5rem 2rem; /* Adjusted horizontal padding to match item margins */
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    min-height: 350px; /* Ensure enough height for the line, dates, and cards */
+    width: 100%; /* Ensure the container takes full width of its parent */
+}
+
+/* Hide scrollbar for aesthetic purposes */
+.timeline-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: var(--dark-background);
+    border-radius: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: var(--primary-cyan);
+    border-radius: 10px;
+    border: 2px solid var(--dark-surface);
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
+}
+
+.timeline-container::before { /* The actual timeline line */
+    content: '';
+    position: absolute;
+    top: 50%; /* Position the line vertically in the middle of the container */
+    left: 0;
+    width: 100%; /* This will extend with the scrollable content */
+    height: 4px;
+    background-color: var(--muted-text);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.timeline-item-wrapper { /* New wrapper for each event, containing date and card */
+    flex: 0 0 300px; /* Fixed width for each event, prevent shrinking */
+    margin: 0 1.5rem; /* Space between events */
+    scroll-snap-align: center; /* Snap to center of item */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically within the wrapper */
+    min-height: 300px; /* Ensure wrapper has enough height for all elements */
+}
+
+.timeline-date {
+    position: absolute;
+    top: -3rem; /* Position above the line */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    text-align: center;
+    white-space: nowrap; /* Prevent date from wrapping */
+}
+
+.timeline-card { /* The actual content card */
+    padding: 1.5rem;
+    background-color: var(--dark-background);
+    border: 2px solid var(--primary-cyan);
+    box-shadow: 6px 6px 0 var(--accent-gold);
+    border-radius: 8px;
+    text-align: center;
+    scroll-snap-align: center; /* Snap to center of item */
+    min-height: unset; /* Allow height to be determined by content */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; /* Take full width of its wrapper */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically within the card */
+    align-items: center;
+    padding: 1rem; /* Reduced padding to hug content more */
+}
+
+.timeline-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--accent-gold);
+}
+
+.timeline-button {
+    display: block; /* Make it take full width of its parent */
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--dark-background); /* Dark text on light button */
+    background: var(--primary-cyan); /* Cyan background */
+    border: 2px solid var(--accent-gold);
+    box-shadow: 4px 4px 0 var(--accent-gold);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    font-size: 1.2rem; /* Match h3 size */
+    margin: 0; /* Remove default margins */
+    text-align: center; /* Center text inside button */
+    width: 100%; /* Ensure button takes full width of card */
+}
+
+.timeline-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--primary-cyan); /* Invert colors for hover */
+    background: var(--accent-gold); /* Gold background on hover */
+    color: var(--dark-background); /* Dark text on gold */
+}
+
+.bio-text {
+    text-align: left; /* Align bio text to the left */
+    max-width: 800px; /* Optional: constrain width for readability */
+    margin: 2rem auto; /* Center the bio text if max-width is set, and add top margin */
+    line-height: 1.6; /* Improve readability */
+}
+
+.bio-text p {
+    margin-bottom: 1rem; /* Space between paragraphs */
+}
+
+.bio-text ul {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 1.5rem; /* Indent the list */
+    margin-bottom: 1rem; /* Space after the list */
+}
+
+.grid-item.large {
+    grid-column: span 2;
+}
+
+/* --- Project Links --- */
+.project-link {
+    margin-top: 1rem;
+}
+
+/* --- Footer --- */
+.site-footer {
+    text-align: center;
+    padding: 4rem;
+    background-color: var(--dark-background); /* Consistent dark background */
+}
+
+.site-footer p {
+    font-family: 'Press Start 2P', cursive; /* Keeping this pixelated for fun */
+    margin-bottom: 1rem;
+    color: var(--primary-cyan);
+}
+
+.contact-link {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--light-text);
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary-cyan);
+    padding-bottom: 4px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.contact-link:hover {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+/* --- Social Links in Footer --- */
+.social-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .profile-img {
+        width: 250px; /* Adjusted size for tablet */
+        height: 250px;
+        border-width: 5px;
+        box-shadow: 8px 8px 0 var(--accent-gold);
+    }
+
+    .header-nav {
+        position: static; /* Return nav to normal flow */
+        justify-content: center; /* Center the nav pills */
+        gap: 0.8rem;
+    }
+
+    .hero-title {
+        /* Simplified shadow for mobile performance */
+        text-shadow: 4px 4px 0 var(--dark-surface);
+        -webkit-text-stroke: 1px var(--accent-gold);
+        /* No specific filter adjustment needed for pseudo-element on mobile, it will scale with parent */
+    }
+
+    .nav-pill {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .grid-section {
+        /* grid-template-columns: 1fr; - Now handled globally */
+        padding: 2rem;
+        /* gap: 0; - Now handled globally with 2px gap */
+        margin: 0.5rem 0 6rem 0; /* Further adjusted top margin for tablet */
+    }
+
+    /* Remove gap between Experience and Projects sections on tablet */
+    #experience {
+        margin-top: 0; /* Keep these overrides for specific sections */
+        margin-bottom: 0; /* Keep these overrides for specific sections */
+    }
+    #projects {
+        margin-top: 0; /* Keep these overrides for specific sections */
+    }
+    
+    #education {
+        margin-top: 0; /* Keep these overrides for specific sections */
+        margin-bottom: 0; /* Keep these overrides for specific sections */
+    }
+    #interests {
+        margin-top: 0;
+    }
+
+    .grid-item {
+        flex-direction: column; /* Stack image and text vertically */
+        padding: 2.5rem; /* Adjusted padding for tablet grid items */
+        gap: 1.5rem; /* Adjust gap for vertical stacking */
+    }
+
+    .grid-image-container {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Take full width */
+        padding: 0; /* No padding here, grid-item padding handles it */
+    }
+
+    .grid-text-content {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Take full width */
+        padding: 0; /* No padding here, grid-item padding handles it */
+    }
+
+    .grid-item-img {
+        max-height: 200px; /* Limit height of image when stacked vertically */
+        object-fit: contain;
+        /* Border styles are now handled globally */
+    }
+
+    .grid-item.large {
+        /* grid-column: span 1; - No longer needed as grid is always 1 column */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title-outside-grid {
+        font-size: clamp(2rem, 5vw, 3rem); /* Adjust size for tablets */
+        margin-top: 3rem; /* Keep space above the title */
+        margin-bottom: 0.1rem; /* Further reduced for mobile */
+    }
+    .profile-img {
+        width: 180px; /* Adjusted size for mobile */
+        height: 180px;
+    }
+
+    .header-nav {
+        position: static; /* Ensure it's in flow on mobile */
+        flex-direction: column; /* Stack nav items vertically on very small screens */
+        gap: 0.5rem;
+        width: 100%; /* Take full width to center pills properly */
+    }
+    .header-nav .nav-pill {
+        width: 80%; /* Make nav pills take up more width */
+        margin: 0 auto; /* Center them */
+    }
+
+    #timeline {
+        margin: 0.5rem 0; /* Adjusted margin for timeline on mobile */
+    }
+}
+
+/* --- Hover Trigger and Popup for Grid Items --- */
+.hover-trigger {
+    position: relative; /* For positioning the popup */
+    display: inline-block; /* Allows padding/margin and relative positioning */
+    cursor: pointer; /* Indicate interactivity */
+    color: var(--primary-cyan); /* Make the text stand out */
+    border-bottom: 1px dashed var(--primary-cyan); /* Visual cue */
+    padding-bottom: 2px; /* Space for the dashed line */
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hover-trigger:hover {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+.hover-popup {
+    position: fixed; /* Changed to fixed for screen centering */
+    bottom: 20px; /* Position from bottom */
+    right: 20px; /* Position from right */
+    /* Removed top, left, and transform for centering */
+    background-color: var(--dark-surface); /* Background for the popup */
+    border: 2px solid var(--accent-gold);
+    box-shadow: 4px 4px 0 var(--primary-cyan);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 800px; /* Increased width for the popup */
+    max-width: 90vw; /* Ensure it doesn't overflow on very small screens */
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Removed transform from transition */
+    z-index: 100; /* Ensure it's on top of other content */
+    pointer-events: none; /* Allow clicks to pass through when hidden */
+    max-height: 90vh; /* Limit height to viewport */
+    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+    /* Removed transform: translate(-50%, -50%); to allow bottom/right positioning */
+}
+
+/* --- Mini Marquee Section for Grid Items --- */
+.mini-marquee-section {
+    background-color: var(--dark-background); /* Slightly darker than surface */
+    padding: 0.5rem 0; /* Smaller vertical padding, horizontal padding provided by parent grid-item */
+    overflow: hidden;
+    border-top: 1px solid var(--primary-cyan); /* Thinner border */
+    margin-top: 1.5rem; /* Space above it */
+}
+
+.mini-marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll 20s linear infinite; /* Faster animation for smaller content */
+    width: fit-content;
+}
+
+.mini-marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.mini-marquee-item-group {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1rem; /* Smaller spacing */
+}
+
+.mini-marquee-item-group span {
+    font-family: 'Work Sans', sans-serif;
+    color: var(--muted-text);
+    font-size: 0.9rem; /* Smaller font size */
+    margin-right: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em; /* Slightly less letter spacing */
+}
+
+.mini-marquee-item-group .star {
+    color: var(--accent-gold);
+    font-size: 0.8rem; /* Smaller star */
+    margin-right: 1rem; /* Smaller space after star */
+    vertical-align: middle;
+}
+
+/* New styles for grid items containing a mini-marquee */
+.grid-item.experience-item { /* Use a more specific class name */
+    flex-direction: column; /* Stack main content and marquee vertically */
+    /* The padding of 3rem from .grid-item will apply to both main content and marquee */
+}
+
+.grid-item-main-content {
+    display: flex;
+    flex-direction: row-reverse; /* Image on the right, text on the left */
+    align-items: stretch;
+    gap: 2rem;
+    flex-grow: 1; /* Allow main content to grow and take available space */
+    padding-bottom: 1.5rem; /* Space before the mini-marquee */
+    border-bottom: 1px solid var(--dark-background); /* A subtle separator */
+}
+
+/* Responsive adjustments for the new structure */
+@media (max-width: 768px) {
+    .grid-item-main-content {
+        flex-direction: column; /* Stack image and text vertically */
+        padding-bottom: 1rem;
+    }
+}
+
+.hover-trigger:hover .hover-popup {
+    opacity: 1;
+    visibility: visible;
+    /* transform: translateX(-50%) translateY(-5px); Removed, as popup is fixed and centered */
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+.popup-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    cursor: zoom-in; /* Indicate that the image is clickable for expansion */
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--primary-cyan);
+}
+
+.popup-caption {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+    #timeline {
+        margin: 0.5rem 0; /* Adjusted margin for timeline on mobile */
+    }
