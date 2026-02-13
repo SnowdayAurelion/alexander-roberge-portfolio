@@ -14,6 +14,7 @@
     --grad-1: #4DD0E1; /* Light Cyan */
     --grad-2: #FFEB3B; /* Lighter Gold */
     --grad-3: #80DEEA; /* Another light Cyan */
+    --text-gradient: linear-gradient(90deg, var(--primary-cyan), var(--accent-gold));
 }
 
 /* --- General & Reset --- */
@@ -216,7 +217,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 .marquee-section {
     background-color: var(--dark-surface); /* Dark background for contrast */
     padding: 1rem 0;
-    overflow: hidden; /* Hide content outside the marquee */
+    overflow: hidden; /* Hide content outside the marquee, but allow inner scroll */
     border-top: 2px solid var(--primary-cyan); /* Consistent with grid-section borders */
     border-bottom: 2px solid var(--primary-cyan);
     margin: 6rem 0; /* Spacing above and below the marquee */
@@ -225,16 +226,16 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 .marquee-content {
     display: flex;
     white-space: nowrap; /* Keep all items on a single line */
-    animation: marquee-scroll 30s linear infinite; /* Adjust duration for speed */
-    width: fit-content; /* Allow content to define its width */
+    animation: marquee-scroll 30s linear infinite; /* Keep for the main marquee */
+    width: fit-content;
 }
 
 .marquee-content:hover {
-    animation-play-state: paused; /* Pause animation on hover */
+    animation-play-state: paused;
 }
 
-.marquee-item-group {
-    display: inline-flex; /* Use inline-flex to keep groups together */
+.marquee-item-group { /* This class is for the main marquee, not the mini-marquee */
+    display: inline-flex;
     align-items: center;
     padding: 0 2rem; /* Spacing between duplicated groups */
 }
@@ -243,19 +244,16 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     font-family: 'Work Sans', sans-serif; /* Dark-gray sans-serif font */
     color: var(--muted-text); /* Muted light gray color */
     font-size: 1.2rem;
-    margin-right: 0.5rem; /* Space after skill name */
+    margin-right: 1.5rem; /* Space between skill names */
     text-transform: uppercase; /* Optional: make skills uppercase */
     letter-spacing: 0.05em;
-}
-
-.marquee-item-group .star {
-    color: var(--accent-gold); /* Gold for the star icon */
-    font-size: 1rem;
-    margin-right: 1.5rem; /* Space after star before next skill */
-    vertical-align: middle; /* Align star vertically */
+    background-image: var(--text-gradient); /* Apply the gradient */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
 }
 
 /* Keyframes for the infinite scrolling animation */
+/* This keyframe block is for the main marquee, not the mini-marquee */
 @keyframes marquee-scroll {
     0% {
         transform: translateX(0%);
@@ -775,67 +773,57 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 
 /* --- Mini Marquee Section for Grid Items --- */
 .mini-marquee-section {
-    background-color: var(--dark-background); /* Slightly darker than surface */
-    padding: 0.5rem 0; /* Smaller vertical padding, horizontal padding provided by parent grid-item */
-    overflow: hidden;
+    /* This container now holds a wrapping list of skills instead of a scrolling marquee. */
     border-top: 1px solid var(--primary-cyan); /* Thinner border */
-    margin-top: 1.5rem; /* Space above it */
+    padding-top: 1rem; /* Space between the border and the skills list */
+    margin-top: 1.5rem; /* Space between the main content and this skills section */
 }
 
 .mini-marquee-content {
     display: flex;
-    white-space: nowrap;
-    animation: marquee-scroll 20s linear infinite; /* Faster animation for smaller content */
-    width: fit-content;
-}
-
-.mini-marquee-content:hover {
-    animation-play-state: paused;
-}
-
-.mini-marquee-item-group {
-    display: inline-flex;
+    flex-wrap: wrap; /* Allow skills to wrap onto multiple lines */
+    justify-content: flex-start; /* Align items to the start */
     align-items: center;
-    padding: 0 1rem; /* Smaller spacing */
+    gap: 0.5rem 1.5rem; /* 0.5rem vertical gap, 1.5rem horizontal gap */
 }
 
-.mini-marquee-item-group span {
+/* New wrapper for each skill + star pair */
+.mini-marquee-skill-item {
+    display: flex;
+    align-items: center;
+    /* flex-shrink: 0; is removed to allow items to wrap correctly. */
+}
+
+.mini-marquee-skill-item span { /* Adjusted for no stars */
     font-family: 'Work Sans', sans-serif;
     color: var(--muted-text);
     font-size: 0.9rem; /* Smaller font size */
-    margin-right: 0.3rem;
+    margin-right: 0; /* No margin needed as gap on parent handles spacing */
     text-transform: uppercase;
     letter-spacing: 0.03em; /* Slightly less letter spacing */
-}
-
-.mini-marquee-item-group .star {
-    color: var(--accent-gold);
-    font-size: 0.8rem; /* Smaller star */
-    margin-right: 1rem; /* Smaller space after star */
-    vertical-align: middle;
+    background-image: var(--text-gradient); /* Apply the gradient */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
 }
 
 /* New styles for grid items containing a mini-marquee */
-.grid-item.experience-item { /* Use a more specific class name */
+.grid-item.experience-item {
     flex-direction: column; /* Stack main content and marquee vertically */
     /* The padding of 3rem from .grid-item will apply to both main content and marquee */
 }
-
+ 
 .grid-item-main-content {
     display: flex;
     flex-direction: row-reverse; /* Image on the right, text on the left */
     align-items: stretch;
     gap: 2rem;
     flex-grow: 1; /* Allow main content to grow and take available space */
-    padding-bottom: 1.5rem; /* Space before the mini-marquee */
-    border-bottom: 1px solid var(--dark-background); /* A subtle separator */
 }
 
 /* Responsive adjustments for the new structure */
 @media (max-width: 768px) {
     .grid-item-main-content {
         flex-direction: column; /* Stack image and text vertically */
-        padding-bottom: 1rem;
     }
 }
 
