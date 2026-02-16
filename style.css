@@ -53,6 +53,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     border: 8px solid var(--primary-cyan); /* Scaled border */
     box-shadow: 15px 15px 0 var(--accent-gold); /* Scaled shadow */
     display: block;
+    margin: 0 auto; /* Center the image within its wrapper */
     position: relative; /* Ensure it's on top of tags */
     z-index: 2;
     animation: profile-float 6s ease-in-out infinite; /* Subtle float animation */
