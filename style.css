@@ -156,7 +156,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 .subtitle {
     font-family: 'Work Sans', sans-serif;
     font-size: clamp(1.2rem, 3vw, 2rem);
-    color: var(--light-text);
+    color: var(--accent-gold);
     margin-top: 1rem;
 }
 
@@ -463,6 +463,21 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 .bio-text p {
     margin-bottom: 1rem; /* Space between paragraphs */
 }
+
+/* Styling for hyperlinks within bio-text paragraphs */
+.bio-text p a {
+    color: var(--primary-cyan); /* Make the link blue by default */
+    text-decoration: underline dotted; /* Add a dotted underline for clarity */
+    text-decoration-color: var(--primary-cyan); /* Make the dotted line blue */
+    transition: color 0.2s ease, text-decoration-color 0.2s ease; /* Smooth transition for color changes */
+}
+
+.bio-text p a:hover {
+    color: var(--accent-gold); /* Turn yellow on hover */
+    text-decoration-color: var(--accent-gold); /* Make the dotted line yellow on hover */
+}
+
+
 
 .bio-text ul {
     list-style: none; /* Remove default bullet points */
