@@ -488,130 +488,6 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     color: var(--dark-background); /* Keep text dark on hover */
     text-decoration-color: transparent; /* Ensure no underline on hover */
 }
-/* --- Timeline Section --- */
-#timeline {
-    margin: 0.5rem 0; /* Reduced top margin for timeline section */
-    padding: 2rem 0; /* Vertical padding */
-    background-color: var(--dark-surface);
-    border-top: 2px solid var(--primary-cyan);
-    border-bottom: 2px solid var(--primary-cyan);
-    position: relative; /* For positioning the line */
-}
-
-.timeline-container {
-    display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    scroll-snap-type: x mandatory; /* Snap to items */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding: 4rem 1rem 2rem; /* Increased top padding to make space for dots above the line */
-    padding: 4rem 1.5rem 2rem; /* Adjusted horizontal padding to match item margins */
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    min-height: 350px; /* Ensure enough height for the line, dates, and cards */
-    width: 100%; /* Ensure the container takes full width of its parent */
-}
-
-/* Hide scrollbar for aesthetic purposes */
-.timeline-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.timeline-container::-webkit-scrollbar-track {
-    background: var(--dark-background);
-    border-radius: 10px;
-}
-
-.timeline-container::-webkit-scrollbar-thumb {
-    background: var(--primary-cyan);
-    border-radius: 10px;
-    border: 2px solid var(--dark-surface);
-}
-
-.timeline-container::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-gold);
-}
-
-.timeline-container::before { /* The actual timeline line */
-    content: '';
-    position: absolute;
-    top: 50%; /* Position the line vertically in the middle of the container */
-    left: 0;
-    width: 100%; /* This will extend with the scrollable content */
-    height: 4px;
-    background-color: var(--muted-text);
-    transform: translateY(-50%);
-    z-index: 0;
-}
-
-.timeline-item-wrapper { /* New wrapper for each event, containing date and card */
-    flex: 0 0 300px; /* Fixed width for each event, prevent shrinking */
-    margin: 0 1.5rem; /* Space between events */
-    scroll-snap-align: center; /* Snap to center of item */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center content vertically within the wrapper */
-    min-height: 300px; /* Ensure wrapper has enough height for all elements */
-}
-
-.timeline-date {
-    position: absolute;
-    top: -3rem; /* Position above the line */
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent-gold);
-    text-align: center;
-    white-space: nowrap; /* Prevent date from wrapping */
-}
-
-.timeline-card { /* The actual content card */
-    padding: 1.5rem;
-    background-color: var(--dark-background);
-    border: 2px solid var(--primary-cyan);
-    box-shadow: 6px 6px 0 var(--accent-gold);
-    border-radius: 8px;
-    text-align: center;
-    scroll-snap-align: center; /* Snap to center of item */
-    min-height: unset; /* Allow height to be determined by content */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 100%; /* Take full width of its wrapper */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically within the card */
-    align-items: center;
-    padding: 1rem; /* Reduced padding to hug content more */
-}
-
-.timeline-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 var(--accent-gold);
-}
-
-.timeline-button {
-    display: block; /* Make it take full width of its parent */
-    padding: 0.75rem 1.5rem;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
-    color: var(--dark-background); /* Dark text on light button */
-    background: var(--primary-cyan); /* Cyan background */
-    border: 2px solid var(--accent-gold);
-    box-shadow: 4px 4px 0 var(--accent-gold);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-    font-size: 1.2rem; /* Match h3 size */
-    margin: 0; /* Remove default margins */
-    text-align: center; /* Center text inside button */
-    width: 100%; /* Ensure button takes full width of card */
-}
-
-.timeline-button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--primary-cyan); /* Invert colors for hover */
-    background: var(--accent-gold); /* Gold background on hover */
-    color: var(--dark-background); /* Dark text on gold */
-}
 
 .bio-text {
     text-align: left; /* Align bio text to the left */
@@ -784,9 +660,6 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
         margin: 0 auto; /* Center them */
     }
 
-    #timeline {
-        margin: 0.5rem 0; /* Adjusted margin for timeline on mobile */
-    }
 }
 
 /* --- Hover Trigger and Popup for Grid Items --- */
@@ -904,7 +777,3 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     font-size: 0.9rem;
     color: var(--light-text);
 }
-
-    #timeline {
-        margin: 0.5rem 0; /* Adjusted margin for timeline on mobile */
-    }
