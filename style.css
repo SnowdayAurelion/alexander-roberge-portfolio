@@ -105,6 +105,21 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     box-shadow: 6px 6px 0 var(--accent-gold);
 }
 
+/* Smaller version of nav-pill for inline use */
+.small-nav-pill {
+    padding: 0.3rem 0.8rem; /* Smaller padding */
+    font-size: 0.7rem; /* Smaller font */
+    margin-left: 0.5rem; /* Space from the text */
+    vertical-align: middle; /* Align with text */
+    box-shadow: 2px 2px 0 var(--primary-cyan); /* Smaller shadow */
+    border-width: 1px; /* Thinner border */
+}
+
+.small-nav-pill:hover {
+    transform: translate(-1px, -1px); /* Smaller hover shift */
+    box-shadow: 3px 3px 0 var(--accent-gold); /* Smaller hover shadow */
+}
+
 /* --- Hero Section --- */
 .hero {
     position: relative;
@@ -437,6 +452,18 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     color: var(--accent-gold); /* Turn yellow on hover */
     text-decoration-color: var(--accent-gold); /* Make the dotted line yellow on hover */
 }
+
+/* Override link styling for small-nav-pill buttons within list items */
+.grid-text-content li .small-nav-pill {
+    color: var(--dark-background); /* Ensure button text is dark */
+    text-decoration: none; /* Remove underline */
+    border-bottom: none; /* Remove any dashed border */
+}
+
+.grid-text-content li .small-nav-pill:hover {
+    color: var(--dark-background); /* Keep text dark on hover */
+    text-decoration-color: transparent; /* Ensure no underline on hover */
+}
 /* --- Timeline Section --- */
 #timeline {
     margin: 0.5rem 0; /* Reduced top margin for timeline section */
@@ -584,6 +611,12 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 /* --- Project Links --- */
+.project-links-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows links to wrap to the next line if space is limited */
+    gap: 0.8rem; /* Small horizontal and vertical gap between links */
+}
+
 .project-link {
     margin-top: 1rem;
 }
