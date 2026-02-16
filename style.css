@@ -41,19 +41,8 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 /* --- Header & Navigation --- */
-.site-header {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
-    padding: 3rem 2rem;
-    gap: 1.5rem; /* Space between name, image, and nav */
-    text-align: center;
-    position: relative; /* Positioning context for the nav */
-}
-
 .profile-picture-wrapper {
     position: relative;
-    margin-bottom: 1rem;
 }
 
 .profile-img {
@@ -119,8 +108,19 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 /* --- Hero Section --- */
 .hero {
     position: relative;
-    padding: 4rem;
+    /* padding: 4rem; Padding is now handled by hero-viewport and bio-text margins */
     text-align: center;
+}
+
+.hero-viewport {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For nav positioning */
+    padding: 2rem; /* Some padding so content isn't at edges */
+    gap: 1.5rem;
 }
 
 .hero-title {
