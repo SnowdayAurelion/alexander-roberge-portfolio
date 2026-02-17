@@ -449,6 +449,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     max-width: 800px; /* Optional: constrain width for readability */
     margin: 2rem auto; /* Center the bio text if max-width is set, and add top margin */
     line-height: 1.6; /* Improve readability */
+    padding: 0 2rem; /* Increased horizontal padding to match other content sections on mobile */
 }
 
 .bio-text p {
@@ -583,14 +584,23 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 
     .hero-title {
         /* Simplified shadow for mobile performance */
-        text-shadow: 4px 4px 0 var(--dark-surface);
+        text-shadow: 3px 3px 0 var(--dark-surface); /* Slightly smaller shadow for mobile */
         -webkit-text-stroke: 1px var(--accent-gold);
         /* No specific filter adjustment needed for pseudo-element on mobile, it will scale with parent */
+        white-space: normal; /* Allow name to wrap on smaller screens */
+    }
+    .hero-title span {
+        display: block; /* Stack first and last name on smaller screens */
     }
 
     .nav-pill {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .marquee-item-group span {
+        font-size: 1rem; /* Smaller font for skills on mobile */
+        margin-right: 1.2rem; /* Reduced margin to fit more skills */
     }
 
     .grid-section {
