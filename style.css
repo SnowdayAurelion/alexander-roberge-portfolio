@@ -452,11 +452,48 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     text-decoration-color: var(--accent-gold); /* Make the dotted line yellow on hover */
 }
 
+/* Force specific dimensions for the Concordia University image */
+#concordia-main-img {
+    width: 400px; /* Set a larger, fixed width for the image */
+    height: 300px; /* Set a larger, fixed height for the image */
+    /* Override responsive properties from .grid-item-img */
+    /* max-width and max-height are kept to ensure it scales down if its container is smaller than these dimensions */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* This will crop the image to fit the dimensions while maintaining aspect ratio */
+}
 
+/* New styles for the photography grid */
+.photography-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns, equal width */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows, equal height */
+    gap: 10px; /* Spacing between images */
+    width: 100%; /* Fill the container */
+    height: 100%; /* Fill the container */
+    /* The grid-image-container already centers its content, so this grid will be centered */
+}
+
+.photography-grid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop to fill the grid cell, maintaining aspect ratio */
+    border-radius: 8px; /* Consistent with other images */
+    border: 2px solid var(--primary-cyan); /* Consistent border style */
+    box-shadow: 4px 4px 0 var(--accent-gold); /* Consistent shadow style */
+    display: block; /* Remove any extra space below images */
+}
+
+/* Responsive adjustments for the photography grid */
+@media (max-width: 768px) {
+    .photography-grid {
+        gap: 5px; /* Smaller gap on smaller screens */
+    }
+}
 
 .bio-text ul {
     list-style: none; /* Remove default bullet points */
-    padding-left: 1.5rem; /* Indent the list */
+    padding-left: 0; /* Align with paragraphs */
     margin-bottom: 1rem; /* Space after the list */
 }
 
@@ -621,15 +658,15 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     position: relative; /* For positioning the popup */
     display: inline-block; /* Allows padding/margin and relative positioning */
     cursor: pointer; /* Indicate interactivity */
-    color: var(--primary-cyan); /* Make the text stand out */
-    border-bottom: 1px dashed var(--primary-cyan); /* Visual cue */
-    padding-bottom: 2px; /* Space for the dashed line */
-    transition: color 0.2s ease, border-color 0.2s ease;
+    color: var(--accent-gold); /* Yellow by default */
+    text-decoration: underline dotted; /* Use text-decoration for a dotted line */
+    text-decoration-color: var(--accent-gold); /* Yellow dotted line by default */
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .hover-trigger:hover {
-    color: var(--accent-gold);
-    border-color: var(--accent-gold);
+    color: var(--primary-cyan); /* Blue on hover */
+    text-decoration-color: var(--primary-cyan); /* Blue dotted line on hover */
 }
 
 .hover-popup {
