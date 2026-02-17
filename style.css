@@ -536,9 +536,10 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 .site-footer p {
-    font-family: 'Press Start 2P', cursive; /* Keeping this pixelated for fun */
+    font-family: 'Work Sans', sans-serif; /* Changed to match general body font */
     margin-bottom: 1rem;
     color: var(--primary-cyan);
+    font-size: 2rem; /* Made the font larger */
 }
 
 .contact-link {
@@ -785,6 +786,14 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     text-decoration: underline dotted;
     text-decoration-color: var(--primary-cyan);
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* Specific adjustment for the photography grid item to share space equally */
+.photography-item .grid-image-container {
+    flex: 1; /* Already 1, but explicitly setting for clarity */
+}
+.photography-item .grid-text-content {
+    flex: 1; /* Make text content take equal space as the image container */
 }
 
 .popup-caption {
