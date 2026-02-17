@@ -308,7 +308,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     flex: 1; /* Takes 1/3 of the space */
     min-width: 0; /* Allow shrinking */
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stack video and subtext vertically */
     justify-content: center;
 }
 
@@ -334,27 +334,43 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 /* New styles for video projects to match image styling and responsiveness */
-.grid-item-video-wrapper {
+.video-and-subtext-container { /* New container for the video block (video + subtext) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the video and subtext horizontally within this container */
+    width: 100%; /* Take full width of its parent (grid-image-container) */
+    border-radius: 8px; /* Apply visual styles here, now for the video block only */
+    border: 2px solid var(--primary-cyan);
+    box-shadow: 4px 4px 0 var(--accent-gold);
+    /* No overflow: hidden here, so subtext is visible */
+}
+
+.video-aspect-ratio-wrapper { /* This will hold the iframe and aspect ratio */
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio (height / width * 100) */
     height: 0;
     overflow: hidden;
-    border-radius: 8px; /* Match image border-radius */
-    border: 2px solid var(--primary-cyan); /* Match image border */
-    box-shadow: 4px 4px 0 var(--accent-gold); /* Match image shadow */
-    /* Ensure it's centered within its flex container if its width was less than 100% */
-    display: block;
-    margin: auto;
+    /* border-radius: 8px 8px 0 0; Removed, parent .video-and-subtext-container handles rounding */
+    /* No border/shadow here, they are on the parent .video-and-subtext-container */
 }
 
-.grid-item-video-wrapper iframe {
+.video-aspect-ratio-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: 0; /* Remove default iframe border */
+}
+
+.video-link-subtext {
+    font-size: 0.8rem; /* Re-added for subtext styling */
+    color: var(--muted-text); /* Re-added for subtext styling */
+    text-align: center; /* Re-added for subtext styling */
+    margin-top: 0.5rem; /* Space between video frame and subtext */
+    padding: 0.5rem 1rem; /* Add padding for visual separation from the container's edges */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Adjustments for text within grid items to accommodate new structure */
@@ -762,6 +778,13 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     cursor: zoom-in; /* Indicate that the image is clickable for expansion */
     margin-bottom: 0.5rem;
     border: 1px solid var(--primary-cyan);
+}
+
+.video-link-subtext a {
+    color: var(--primary-cyan);
+    text-decoration: underline dotted;
+    text-decoration-color: var(--primary-cyan);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .popup-caption {
