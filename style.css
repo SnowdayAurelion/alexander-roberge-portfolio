@@ -457,7 +457,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 /* Styling for hyperlinks within bio-text paragraphs */
-.bio-text p a {
+.bio-text p a, .bio-text ul li a {
     color: var(--primary-cyan); /* Make the link blue by default */
     text-decoration: underline dotted; /* Add a dotted underline for clarity */
     text-decoration-color: var(--primary-cyan); /* Make the dotted line blue */
@@ -509,9 +509,13 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 }
 
 .bio-text ul {
-    list-style: none; /* Remove default bullet points */
-    padding-left: 0; /* Align with paragraphs */
+    list-style: disc; /* Display default bullet points */
+    padding-left: 1.5rem; /* Add padding for the bullet points */
     margin-bottom: 1rem; /* Space after the list */
+}
+
+.bio-text ul li::marker {
+    color: var(--primary-cyan); /* Make the bullet points blue */
 }
 
 .grid-item.large {
