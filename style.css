@@ -880,3 +880,9 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     color: var(--accent-gold); /* Consistent with other subheadings */
     margin: 2rem 0 1rem 0; /* Top, Right/Left, Bottom margin */
 }
+
+/* Specific styling for the charity volunteer image to make it smaller */
+#charity-volunteer-img {
+    max-width: 370px; /* Make the image 20% smaller than previous 250px */
+    max-height: 370px; /* Adjust height accordingly (20% smaller than previous 200px) */
+}
