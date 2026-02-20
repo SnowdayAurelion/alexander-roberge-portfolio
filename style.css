@@ -814,3 +814,69 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     font-size: 0.9rem;
     color: var(--light-text);
 }
+
+/* New frame for embedded content */
+.project-iframe-frame {
+    background-color: var(--dark-surface);
+    padding: 0; /* Removed padding to make the border hug the embedded content */
+    border: 2px solid var(--primary-cyan);
+    box-shadow: 4px 4px 0 var(--accent-gold);
+    border-radius: 8px;
+    margin-top: 2rem; /* Space from the main content above */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+.project-iframe-frame .video-and-subtext-container {
+    width: 100%;
+    border: none; /* Remove border/shadow from this inner container as it's on the frame */
+    box-shadow: none;
+}
+
+.project-iframe-frame .video-aspect-ratio-wrapper {
+    width: 100%;
+    /* max-width: 800px; Removed to allow iframe to fill available width */
+    margin: 0 auto; /* Center the video within the frame */
+}
+
+.project-iframe-frame .video-link-subtext {
+    /* This rule is no longer needed as the .video-link-subtext is moved outside the frame */
+    /* margin-top: 1rem; */
+}
+
+/* Styling for the Figma prototype link when it's outside the iframe frame */
+.project-link-after-iframe {
+    margin-top: 1rem; /* Space from the frame above */
+    margin-bottom: 1rem; /* Space from the mini-marquee below */
+    padding: 0; /* Remove padding that was applied when it was inside the frame */
+}
+
+/* Specific styling for the Study App project grid item */
+.grid-item.study-app-project {
+    flex-direction: column; /* Stack main content, iframe frame, and mini-marquee vertically */
+}
+
+@media (max-width: 768px) {
+    .project-iframe-frame {
+        padding: 0; /* Removed padding for smaller screens */
+        margin-top: 1.5rem;
+        display: none; /* Hide the iframe frame on mobile */
+    }
+    .project-link-after-iframe {
+        display: none; /* Hide the Figma prototype link on mobile */
+    }
+    .grid-item.study-app-project h4 {
+        display: none; /* Hide the Figma Prototype header on mobile */
+    }
+    .project-iframe-frame .video-aspect-ratio-wrapper {
+        max-width: 100%; /* Allow it to take full width on smaller screens */
+    }
+}
+
+/* Styling for the Figma Prototype sub-header */
+.grid-item.study-app-project h4 {
+    text-align: center;
+    color: var(--accent-gold); /* Consistent with other subheadings */
+    margin: 2rem 0 1rem 0; /* Top, Right/Left, Bottom margin */
+}
