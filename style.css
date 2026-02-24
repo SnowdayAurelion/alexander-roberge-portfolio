@@ -444,27 +444,126 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
     text-decoration-color: transparent; /* Ensure no underline on hover */
 }
 
+/* --- Coursework List Styling --- */
+/* This is the nested list of courses */
+.course-list {
+    list-style: none;
+    padding-left: 0; /* We'll add custom bullets/indentation */
+    margin-top: 0.5rem;
+}
+
+/* Each course item in the list */
+.course-list > li {
+    padding-left: 1.5rem; /* Indent for custom bullet */
+    margin-bottom: 0.25rem; /* Space between courses */
+    position: relative;
+}
+
+/* Custom bullet for each course's <details> block */
+.course-list > li::before {
+    content: '•'; /* Use the same bullet as other list items */
+    color: var(--primary-cyan);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0.1em; /* Fine-tune vertical alignment */
+}
+
+.course-list strong {
+    color: var(--accent-gold);
+}
+
+.skills-details summary {
+    cursor: pointer;
+    list-style: none; /* Hide default marker */
+    outline: none; /* Remove focus outline */
+    display: inline-flex; /* Align arrow and text on one line */
+    align-items: center; /* Vertically center arrow and text */
+    color: var(--light-text); /* Ensure text color is consistent */
+}
+
+.skills-details summary::-webkit-details-marker {
+    display: none; /* Hide default marker in WebKit */
+}
+
+/* The interactive arrow is a pseudo-element of the summary */
+.skills-details summary::before {
+    content: ''; /* Using borders to create a chevron */
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    margin-right: 0.5rem; /* Space between arrow and text */
+    display: inline-block; /* Needed for transform to work */
+    width: 0.45em; /* Size of the chevron */
+    height: 0.45em;
+    border-top: 2px solid var(--primary-cyan);
+    border-right: 2px solid var(--primary-cyan);
+    transform: rotate(45deg); /* Pointing right */
+}
+
+.skills-details[open] > summary::before {
+    transform: rotate(135deg); /* Pointing down */
+}
+
+.skills-details summary:hover::before {
+    border-color: var(--accent-gold);
+}
+
+/* The list of skills that appears when expanded */
+.skills-details ul {
+    list-style: disc;
+    padding-left: 2.5rem; /* Indent skills under the course title */
+    font-size: 0.9rem;
+    color: var(--muted-text);
+
+    /* Animation properties */
+    /* --- Animation Properties --- */
+    /* Initial (collapsed) state */
+    overflow: hidden;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease-in-out, margin-top 0.4s ease-in-out, opacity 0.2s ease-in-out;
+    visibility: hidden;
+    /* Smooth transition for expand/collapse */
+    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, margin-top 0.35s ease-in-out, visibility 0.35s;
+}
+
+.skills-details[open] > ul {
+    /* Expanded state */
+    max-height: 10rem; /* A value larger than any expected content height */
+    margin-top: 0.5rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+.skills-details ul li {
+    padding-left: 0;
+    margin-bottom: 0.35rem;
+    position: static; /* Reset position */
+}
+
+.skills-details ul li::before {
+    content: ''; /* Use the default disc from list-style */
+}
 .bio-text {
     text-align: left; /* Align bio text to the left */
     max-width: 800px; /* Optional: constrain width for readability */
     margin: 2rem auto; /* Center the bio text if max-width is set, and add top margin */
-    line-height: 1.6; /* Improve readability */
-    padding: 0 2rem; /* Increased horizontal padding to match other content sections on mobile */
+    line-height: 1.6;
 }
 
 .bio-text p {
     margin-bottom: 1rem; /* Space between paragraphs */
 }
 
-/* Styling for hyperlinks within bio-text paragraphs */
-.bio-text p a, .bio-text ul li a {
+/* Styling for hyperlinks within the bio text */
+.bio-text a {
     color: var(--primary-cyan); /* Make the link blue by default */
     text-decoration: underline dotted; /* Add a dotted underline for clarity */
     text-decoration-color: var(--primary-cyan); /* Make the dotted line blue */
     transition: color 0.2s ease, text-decoration-color 0.2s ease; /* Smooth transition for color changes */
 }
 
-.bio-text p a:hover {
+.bio-text a:hover {
     color: var(--accent-gold); /* Turn yellow on hover */
     text-decoration-color: var(--accent-gold); /* Make the dotted line yellow on hover */
 }
