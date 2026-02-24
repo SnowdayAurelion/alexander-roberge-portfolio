@@ -212,7 +212,7 @@ h1, h2, .logo, .hero-title { /* Added .hero-title here for clarity, though h1 al
 .marquee-content {
     display: flex;
     white-space: nowrap; /* Keep all items on a single line */
-    animation: marquee-scroll 90s linear infinite; /* Keep for the main marquee */
+    animation: marquee-scroll 60s linear infinite; /* Keep for the main marquee */
     width: fit-content;
 }
 
